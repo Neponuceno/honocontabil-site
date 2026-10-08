@@ -303,6 +303,53 @@
   </div>
 </section>
 
+<!-- ================= MENSAGEM ================= -->
+<section class="sec sec-menta" id="mensagem">
+  <div class="sec-in">
+    <header class="sec-cab">
+      <h2>Prefere escrever? Deixe sua mensagem.</h2>
+      <p>Conte o que você precisa. Respondemos pelo e-mail ou WhatsApp que você informar.</p>
+    </header>
+    <div class="msg">
+      <form class="msg-form" id="form-contato" novalidate>
+        <div class="msg-grade">
+          <label class="msg-campo"><span>Nome <b aria-hidden="true">*</b></span><input name="nome" type="text" autocomplete="name" maxlength="120" placeholder="Seu nome completo" required></label>
+          <label class="msg-campo"><span>E-mail <b aria-hidden="true">*</b></span><input name="email" type="email" autocomplete="email" maxlength="160" placeholder="seu@email.com" required></label>
+          <label class="msg-campo"><span>WhatsApp ou telefone <b aria-hidden="true">*</b></span><input name="telefone" type="tel" autocomplete="tel" maxlength="30" placeholder="(99) 99999-9999" required></label>
+          <label class="msg-campo"><span>Escritório</span><input name="escritorio" type="text" autocomplete="organization" maxlength="120" placeholder="Nome do seu escritório"></label>
+          <label class="msg-campo msg-larga"><span>Assunto <b aria-hidden="true">*</b></span>
+            <select name="assunto" required>
+              <option value="">Selecione o assunto</option>
+              <option>Quero testar o sistema</option>
+              <option>Dúvida sobre os planos</option>
+              <option>Dúvida sobre nota fiscal (NFS-e)</option>
+              <option>Suporte</option>
+              <option>Outro assunto</option>
+            </select>
+          </label>
+          <label class="msg-campo msg-larga"><span>Mensagem <b aria-hidden="true">*</b></span><textarea name="mensagem" rows="5" maxlength="2000" placeholder="Descreva sua dúvida ou o que você precisa…" required></textarea></label>
+          <label class="msg-isca" aria-hidden="true">Não preencha este campo<input name="site_url" type="text" tabindex="-1" autocomplete="off"></label>
+        </div>
+        <button class="btn btn-pri btn-gg msg-enviar" type="submit">Enviar mensagem</button>
+        <p class="msg-estado" id="form-estado" role="status" aria-live="polite"></p>
+        <p class="msg-lgpd">Ao enviar, você concorda que usemos esses dados para responder ao seu contato, conforme a <a data-app="/privacidade.html" href="https://app.honocontabil.com.br/privacidade.html" target="_blank" rel="noopener">Política de privacidade</a>.</p>
+      </form>
+      <aside class="msg-lado" aria-label="Outros canais">
+        <div class="msg-cartao">
+          <h3>WhatsApp</h3>
+          <p><a data-wa href="https://wa.me/5599982850044?text=Ol%C3%A1!%20Quero%20conhecer%20o%20Hono%20Cont%C3%A1bil." target="_blank" rel="noopener">(99) 98285-0044</a></p>
+          <small>Para uma conversa rápida.</small>
+        </div>
+        <div class="msg-cartao">
+          <h3>E-mail</h3>
+          <p data-email-txt>contato@honocontabil.com.br</p>
+          <small>Ou use o formulário ao lado.</small>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
 <!-- ================= CONTATO ================= -->
 <section class="fecho" id="contato">
   <div class="sec-in fecho-in">
@@ -316,7 +363,7 @@
     </div>
     <ul class="contatos">
       <li><span class="contato-rot">WhatsApp</span><a data-wa href="https://wa.me/5599982850044?text=Ol%C3%A1!%20Quero%20conhecer%20o%20Hono%20Cont%C3%A1bil." target="_blank" rel="noopener">(99) 98285-0044</a></li>
-      <li><span class="contato-rot">E-mail</span><a data-email href="mailto:contato@honocontabil.com.br">contato@honocontabil.com.br</a></li>
+      <li><span class="contato-rot">E-mail</span><a data-email href="#mensagem">contato@honocontabil.com.br</a></li>
       <li class="redes" id="redes" hidden>
         <span class="contato-rot">Redes sociais</span>
         <span class="redes-lista">
