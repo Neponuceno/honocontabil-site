@@ -288,3 +288,38 @@ button { font: inherit; color: inherit; cursor: pointer; }
   .rodape-links { grid-template-columns: 1fr; }
   .zap-rot { display: none; }
 }
+
+/* ---------- sobre a empresa ---------- */
+.sobre { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(28px, 5vw, 72px); align-items: start; }
+.sobre-card { background: var(--papel-2); border: 1.5px solid var(--linha); border-radius: 14px; padding: clamp(24px, 3.4vw, 40px); text-align: center; display: flex; flex-direction: column; align-items: center; }
+.sobre-foto { width: 112px; height: 112px; border-radius: 50%; object-fit: cover; border: 4px solid #fff; box-shadow: 0 0 0 2px var(--verde); }
+.sobre-card h3 { margin-top: 18px; font-size: 1.4rem; font-weight: 700; }
+.sobre-cargo { margin-top: 6px; font-size: 13px; font-weight: 650; color: var(--verde-esc); background: var(--menta); border-radius: 999px; padding: 3px 12px; }
+.sobre-bio { margin-top: 16px; color: var(--muted); font-size: 1rem; }
+.sobre-cita { margin: 22px 0 0; padding-top: 20px; border-top: 1px solid var(--pauta); font-family: var(--f-tit); font-size: 1.12rem; line-height: 1.4; font-weight: 520; color: var(--tinta); }
+.sobre-texto h3 { font-size: 1.5rem; font-weight: 700; }
+.sobre-texto > p { margin-top: 12px; color: var(--muted); font-size: 1.05rem; max-width: 40em; }
+.sobre-mv { margin: 26px 0 0; border-top: 1.5px solid var(--tinta); }
+.sobre-mv > div { padding: 18px 0; border-bottom: 1px solid var(--linha); }
+.sobre-mv dt { font-family: var(--f-tit); font-weight: 680; font-size: 1.15rem; }
+.sobre-mv dd { margin: 6px 0 0; color: var(--muted); max-width: 40em; }
+.sobre-nums { list-style: none; margin: 26px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 20px clamp(28px, 5vw, 56px); }
+.sobre-nums li { display: flex; flex-direction: column; gap: 2px; max-width: 14em; }
+.sobre-nums strong { font-family: var(--f-tit); font-size: clamp(2rem, 4vw, 2.7rem); font-weight: 750; line-height: 1; color: var(--verde); letter-spacing: -0.02em; }
+.sobre-nums span { font-size: 14.5px; color: var(--muted); }
+.sobre-legal { margin-top: 24px; font-size: 13.5px; color: var(--muted); }
+@media (max-width: 960px) {
+  .sobre { grid-template-columns: 1fr; }
+}
+/* menu um pouco mais compacto em telas médias, para caber o link Sobre */
+@media (min-width: 961px) and (max-width: 1160px) {
+  .topo-in { gap: 14px; }
+  .menu { gap: 16px; }
+  .menu > a { font-size: 14.5px; }
+  .menu-acoes { margin-left: 2px; gap: 8px; }
+}
+@media (min-width: 961px) and (max-width: 1010px) {
+  .menu { gap: 12px; }
+  .menu > a { font-size: 14px; }
+  .menu-acoes .btn { padding-left: 14px; padding-right: 14px; }
+}
