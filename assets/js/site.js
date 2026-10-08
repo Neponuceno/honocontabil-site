@@ -15,7 +15,9 @@ const SITE = {
   // ----- endereços e contatos vindos do SITE -----
   $$('[data-app]').forEach((a) => { a.href = SITE.app + a.getAttribute('data-app'); });
   $$('[data-wa]').forEach((a) => { const u = new URL(a.href); a.href = `https://wa.me/${SITE.whatsapp}${u.search}`; });
-  $$('[data-email]').forEach((a) => { a.href = `mailto:${SITE.email}`; a.textContent = SITE.email; });
+  // o e-mail leva ao formulário de mensagem do próprio site
+  $$('[data-email]').forEach((a) => { a.textContent = SITE.email; });
+  $$('[data-email-txt]').forEach((el) => { el.textContent = SITE.email; });
   let algumaRede = false;
   $$('[data-rede]').forEach((a) => { const url = SITE.redes[a.dataset.rede]; if (url) { a.href = url; a.hidden = false; algumaRede = true; } });
   if (algumaRede) $('#redes').hidden = false;
@@ -32,6 +34,44 @@ const SITE = {
   burger.addEventListener('click', () => { const ab = menu.classList.toggle('aberto'); burger.setAttribute('aria-expanded', String(ab)); burger.setAttribute('aria-label', ab ? 'Fechar menu' : 'Abrir menu'); });
   $$('#menu a').forEach((a) => a.addEventListener('click', fechar));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') fechar(); });
+
+  // ----- formulário de mensagem (enviado ao e-mail do SITE, sem sair da página) -----
+  const form = $('#form-contato');
+  if (form) {
+    const estado = $('#form-estado'), botao = $('.msg-enviar', form), rotulo = botao.textContent;
+    const val = (n) => form.elements[n].value.trim();
+    const dizer = (tipo, html) => { estado.className = 'msg-estado ' + tipo; estado.innerHTML = html; };
+    const zap = `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent('Olá! Tentei enviar uma mensagem pelo site.')}`;
+    const regras = [
+      ['nome', (v) => v.length >= 2, 'Informe seu nome.'],
+      ['email', (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v), 'Informe um e-mail válido.'],
+      ['telefone', (v) => v.replace(/\D/g, '').length >= 10, 'Informe o WhatsApp ou telefone com DDD.'],
+      ['assunto', (v) => v !== '', 'Escolha o assunto.'],
+      ['mensagem', (v) => v.length >= 10, 'Escreva sua mensagem (mínimo de 10 letras).'],
+    ];
+    $$('input, select, textarea', form).forEach((c) => c.addEventListener('input', () => c.removeAttribute('aria-invalid')));
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      $$('[aria-invalid]', form).forEach((c) => c.removeAttribute('aria-invalid'));
+      const falhas = regras.filter(([n, ok]) => !ok(val(n)));
+      if (falhas.length) {
+        falhas.forEach(([n]) => form.elements[n].setAttribute('aria-invalid', 'true'));
+        form.elements[falhas[0][0]].focus(); dizer('erro', falhas[0][2]); return;
+      }
+      if (form.elements.site_url.value) { dizer('ok', 'Mensagem enviada. Obrigado!'); form.reset(); return; } // campo-isca: robô
+      botao.disabled = true; botao.textContent = 'Enviando…'; dizer('', '');
+      const dados = { name: val('nome'), email: val('email'), telefone: val('telefone'), escritorio: val('escritorio') || '(não informado)', assunto: val('assunto'), message: val('mensagem'),
+        _subject: `Site Hono Contábil: ${val('assunto')} — ${val('nome')}`, _template: 'table', _captcha: 'false' };
+      try {
+        const r = await fetch(`https://formsubmit.co/ajax/${SITE.email}`, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(dados) });
+        const j = await r.json().catch(() => ({}));
+        if (!r.ok || !(j.success === true || j.success === 'true')) throw new Error('falha');
+        form.reset(); dizer('ok', 'Mensagem enviada! Responderemos pelo e-mail ou WhatsApp que você informou.');
+      } catch (_) {
+        dizer('erro', `Não foi possível enviar agora. Tente de novo em instantes ou <a href="${zap}" target="_blank" rel="noopener">fale pelo WhatsApp</a>.`);
+      } finally { botao.disabled = false; botao.textContent = rotulo; }
+    });
+  }
 
   // ----- explorador de funcionalidades -----
   const expl = $('#expl'); if (!expl) return;
