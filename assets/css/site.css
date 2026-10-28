@@ -387,3 +387,5 @@ button { font: inherit; color: inherit; cursor: pointer; }
 @keyframes bf-sobe { from { opacity: 0; transform: translateY(28px) scale(.96) } to { opacity: 1; transform: none } }
 @keyframes bf-pulsa { 0%, 100% { transform: rotate(-2deg) scale(1) } 50% { transform: rotate(-2deg) scale(1.06) } }
 @media (prefers-reduced-motion: reduce) { .bf-fundo, .bf-card, .bf-selo { animation: none; } }
+.bf-ate { display: inline-block; margin-left: 10px; vertical-align: middle; font-size: 13px; font-weight: 700; color: #ffc36b; border: 1.5px solid rgba(255,195,107,.55); border-radius: 6px; padding: 3px 10px; }
+.bf-prazo { margin: 2px 0 0; font-size: 14px; font-weight: 650; color: #ffc36b; }
