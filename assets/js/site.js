@@ -24,7 +24,12 @@ const SITE = {
   const ano = $('#ano'); if (ano) ano.textContent = new Date().getFullYear();
 
   // ----- card da Black Friday: aparece ao entrar (uma vez por visita) e leva ao cadastro -----
-  const bf = $('#bf');
+  // a oferta some sozinha depois da data final (a mesma data configurada no painel do sistema)
+  const FIM_OFERTA = '2026-11-30';
+  const d0 = new Date(); const hojeISO = `${d0.getFullYear()}-${String(d0.getMonth() + 1).padStart(2, '0')}-${String(d0.getDate()).padStart(2, '0')}`;
+  const ofertaViva = hojeISO <= FIM_OFERTA;
+  if (!ofertaViva) { const x = $('#bf'); if (x) x.remove(); $$('.faixa-bf').forEach((f) => f.remove()); }
+  const bf = ofertaViva ? $('#bf') : null;
   if (bf) {
     let visto = false; try { visto = sessionStorage.getItem('bf-visto') === '1'; } catch (_) {}
     const fecharBf = () => { bf.hidden = true; document.body.style.overflow = ''; try { sessionStorage.setItem('bf-visto', '1'); } catch (_) {} };
