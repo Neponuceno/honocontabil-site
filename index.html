@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Hono Contábil | Financeiro para escritórios de contabilidade</title>
-<meta name="description" content="Controle os honorários, as despesas e o caixa do seu escritório contábil em um só lugar. Contratos, contas a receber e a pagar, fluxo de caixa, DRE e balancete. Teste grátis por 7 dias.">
+<meta name="description" content="Controle os honorários, as despesas e o caixa do seu escritório contábil em um só lugar. Contratos, contas a receber e a pagar, fluxo de caixa, DRE, balancete, emissão de NFS-e e cálculo de impostos. Teste grátis por 7 dias.">
 <meta name="theme-color" content="#0f766e">
 <link rel="canonical" href="https://honocontabil.com.br/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -21,7 +21,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/site.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Hono Contábil","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"Sistema financeiro para escritórios de contabilidade: honorários, contas a pagar e a receber, fluxo de caixa, DRE e balancete.","offers":[{"@type":"Offer","name":"Essencial","price":"49.90","priceCurrency":"BRL"},{"@type":"Offer","name":"Com emissão de NFS-e","price":"69.90","priceCurrency":"BRL"}],"publisher":{"@type":"Organization","name":"Soluções Contábeis Ltda.","taxID":"19.166.984/0001-03"}}
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Hono Contábil","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"Sistema financeiro para escritórios de contabilidade: honorários, contas a pagar e a receber, fluxo de caixa, DRE, balancete, emissão de NFS-e e cálculo de impostos.","offers":[{"@type":"Offer","name":"Essencial","price":"49.90","priceCurrency":"BRL"},{"@type":"Offer","name":"Com emissão de NFS-e","price":"69.90","priceCurrency":"BRL"}],"publisher":{"@type":"Organization","name":"Soluções Contábeis Ltda.","taxID":"19.166.984/0001-03"}}
 </script>
 </head>
 <body>
@@ -41,7 +41,7 @@
       <a href="#sobre">Sobre</a>
       <a href="#contato">Contato</a>
       <div class="menu-acoes">
-        <a class="btn btn-linha" data-app="/" href="https://app.honocontabil.com.br/">Entrar</a>
+        <a class="btn btn-linha" data-app="/" href="https://app.honocontabil.com.br/" target="_blank" rel="noopener">Entrar</a>
         <a class="btn btn-pri" data-app="/#/cadastro" href="https://app.honocontabil.com.br/#/cadastro">Teste grátis</a>
       </div>
     </nav>
@@ -67,7 +67,7 @@
     <figure class="hero-tela" aria-label="Tela inicial do Hono Contábil, com dados de exemplo">
       <div class="janela">
         <div class="janela-barra"><span class="janela-url">app.honocontabil.com.br</span></div>
-        <img src="assets/img/inicio.webp" width="1440" height="900" alt="Painel inicial do Hono Contábil com recebido no mês, despesas, saldo por conta e gráfico de receitas e despesas" fetchpriority="high">
+        <img src="assets/img/inicio.webp" width="2880" height="1800" alt="Painel inicial do Hono Contábil com recebido no mês, despesas, saldo por conta e gráfico de receitas e despesas" fetchpriority="high">
       </div>
       <div class="carimbo" aria-hidden="true"><strong>7 dias</strong><span>grátis</span></div>
       <figcaption class="legenda">Dados de exemplo.</figcaption>
@@ -92,7 +92,27 @@
 
     <div class="expl" id="expl">
       <div class="expl-lista" role="tablist" aria-label="Funcionalidades" aria-orientation="vertical">
-        <button class="expl-item on" role="tab" id="t-receber" aria-selected="true" aria-controls="p-receber" data-img="receber">
+        <button class="expl-item on" role="tab" id="t-notas" aria-selected="true" aria-controls="p-receber" data-img="notas">
+          <span class="expl-tit">Notas fiscais (NFS-e) <span class="novo">Novo</span></span>
+          <span class="expl-corpo"><span class="expl-in"><span class="expl-txt">Quando o cliente paga, o recebimento já aparece como “a emitir”. Emita a NFS-e Nacional sem sair do sistema e acompanhe o que já foi emitido.</span><span class="expl-pontos"><span>Emissão direta no Emissor Nacional</span><span>XML e PDF da nota para baixar</span><span>Controle das notas emitidas e a emitir</span></span></span></span>
+          <i class="expl-prog" aria-hidden="true"></i>
+        </button>
+        <button class="expl-item" role="tab" id="t-impostos" aria-selected="false" aria-controls="p-receber" data-img="impostos" tabindex="-1">
+          <span class="expl-tit">Impostos <span class="novo">Novo</span></span>
+          <span class="expl-corpo"><span class="expl-in"><span class="expl-txt">Veja quanto de Simples Nacional o escritório deve no mês. A alíquota efetiva é calculada pela receita dos últimos 12 meses, a cada recebimento.</span><span class="expl-pontos"><span>Imposto estimado (DAS) mês a mês</span><span>Faixa do Simples e quanto falta para a próxima</span><span>Acompanha o limite de R$ 4,8 milhões</span></span></span></span>
+          <i class="expl-prog" aria-hidden="true"></i>
+        </button>
+        <button class="expl-item" role="tab" id="t-tabelas" aria-selected="false" aria-controls="p-receber" data-img="tabelas" tabindex="-1">
+          <span class="expl-tit">Tabelas <span class="novo">Novo</span></span>
+          <span class="expl-corpo"><span class="expl-in"><span class="expl-txt">Consulta rápida das tabelas que o escritório usa todo dia, sempre com a data da última conferência.</span><span class="expl-pontos"><span>Simples Nacional, INSS e imposto de renda</span><span>Salário-família e salário mínimo</span><span>Atualizadas pelo sistema para todos os escritórios</span></span></span></span>
+          <i class="expl-prog" aria-hidden="true"></i>
+        </button>
+        <button class="expl-item" role="tab" id="t-certificados" aria-selected="false" aria-controls="p-receber" data-img="certificados" tabindex="-1">
+          <span class="expl-tit">Certificados digitais dos clientes <span class="novo">Novo</span></span>
+          <span class="expl-corpo"><span class="expl-in"><span class="expl-txt">Saiba quando o certificado digital de cada cliente vence e avise com antecedência, antes que o cliente fique sem emitir nota ou transmitir obrigações.</span><span class="expl-pontos"><span>Vencimentos dos próximos 12 meses em gráfico</span><span>Aviso ao cliente por WhatsApp, com registro de quem foi avisado</span><span>Guarda só a data de validade, nunca o arquivo do certificado</span></span></span></span>
+          <i class="expl-prog" aria-hidden="true"></i>
+        </button>
+        <button class="expl-item" role="tab" id="t-receber" aria-selected="false" aria-controls="p-receber" data-img="receber" tabindex="-1">
           <span class="expl-tit">Contas a receber</span>
           <span class="expl-corpo"><span class="expl-in"><span class="expl-txt">Veja quem pagou, quem vai pagar e quem está atrasado. Os honorários dos contratos são gerados todo mês e você dá baixa com um clique.</span><span class="expl-pontos"><span>Atrasos destacados, com os dias de atraso</span><span>Recibo em PDF ao receber</span><span>Honorário de 13º e vencimento por contrato</span></span></span></span>
           <i class="expl-prog" aria-hidden="true"></i>
@@ -128,12 +148,16 @@
         <div class="janela">
           <div class="janela-barra"><span class="janela-url">app.honocontabil.com.br</span></div>
           <div class="expl-imgs">
-            <img class="on" data-k="receber" src="assets/img/receber.webp" width="1440" height="900" alt="Tela de contas a receber, com vencidos e a vencer, e botões para receber, editar e cancelar" loading="lazy">
-            <img data-k="pagar" src="assets/img/pagar.webp" width="1440" height="900" alt="Tela de contas a pagar, com despesas em aberto, vencimentos e categorias" loading="lazy">
-            <img data-k="fluxo" src="assets/img/fluxo.webp" width="1440" height="900" alt="Tela de fluxo de caixa, com entradas, saídas e saldo projetado por mês" loading="lazy">
-            <img data-k="dre" src="assets/img/dre.webp" width="1440" height="900" alt="Tela de resultado do exercício, com receitas e despesas por categoria" loading="lazy">
-            <img data-k="bi" src="assets/img/bi.webp" width="1440" height="900" alt="Painel inteligente, com a nota de saúde financeira e os indicadores do mês" loading="lazy">
-            <img data-k="balancete" src="assets/img/balancete.webp" width="1440" height="900" alt="Balancete de verificação com a conferência de débitos e créditos" loading="lazy">
+            <img class="on" data-k="notas" src="assets/img/notas.webp" width="2880" height="1800" alt="Tela de notas fiscais de serviço, com notas emitidas e recebimentos a emitir" loading="lazy">
+            <img data-k="impostos" src="assets/img/impostos.webp" width="2880" height="1800" alt="Tela de impostos, com a alíquota efetiva e o imposto estimado do Simples Nacional no mês" loading="lazy">
+            <img data-k="tabelas" src="assets/img/tabelas.webp" width="2880" height="1800" alt="Tela de tabelas do Simples Nacional, INSS, imposto de renda e salário mínimo" loading="lazy">
+            <img data-k="certificados" src="assets/img/certificados.webp" width="2880" height="1800" alt="Tela de certificados digitais dos clientes, com vencimentos nos próximos 12 meses e aviso ao cliente" loading="lazy">
+            <img data-k="receber" src="assets/img/receber.webp" width="2880" height="1800" alt="Tela de contas a receber, com vencidos e a vencer, e botões para receber, editar e cancelar" loading="lazy">
+            <img data-k="pagar" src="assets/img/pagar.webp" width="2880" height="1800" alt="Tela de contas a pagar, com despesas em aberto, vencimentos e categorias" loading="lazy">
+            <img data-k="fluxo" src="assets/img/fluxo.webp" width="2880" height="1800" alt="Tela de fluxo de caixa, com entradas, saídas e saldo projetado por mês" loading="lazy">
+            <img data-k="dre" src="assets/img/dre.webp" width="2880" height="1800" alt="Tela de resultado do exercício, com receitas e despesas por categoria" loading="lazy">
+            <img data-k="bi" src="assets/img/bi.webp" width="2880" height="1800" alt="Painel inteligente, com a nota de saúde financeira e os indicadores do mês" loading="lazy">
+            <img data-k="balancete" src="assets/img/balancete.webp" width="2880" height="1800" alt="Balancete de verificação com a conferência de débitos e créditos" loading="lazy">
           </div>
         </div>
       </div>
@@ -143,7 +167,9 @@
       <h3>E também</h3>
       <ul>
         <li>Contratos de honorários</li>
+        <li>Emissão de NFS-e Nacional</li>
         <li>Cadastro de clientes pelo CNPJ</li>
+        <li>Controle de certificados digitais</li>
         <li>Relatório de inadimplência</li>
         <li>Receita por cliente</li>
         <li>Importação de extrato OFX</li>
@@ -214,7 +240,7 @@
   <div class="sec-in">
     <header class="sec-cab">
       <h2>Dois planos, sem fidelidade.</h2>
-      <p>Usuários e clientes ilimitados nos dois. Pague por Pix, boleto ou cartão e cancele quando quiser, direto no sistema.</p>
+      <p>Usuários e clientes ilimitados nos dois. Durante o teste de 7 dias, todas as telas ficam liberadas para você conhecer. Pague por Pix, boleto ou cartão e cancele quando quiser, direto no sistema.</p>
     </header>
 
     <div class="planos">
@@ -234,11 +260,19 @@
       </article>
 
       <article class="plano plano-b">
-        <h3>Com emissão de NFS-e <span class="selo">Emissão em breve</span></h3>
+        <p class="faixa-bf">Black Friday: 3 meses por R$ 49,90</p>
+        <h3>Sistema completo <span class="selo selo-ok">Com NFS-e</span></h3>
         <p class="preco"><span class="preco-rs">R$</span><span class="preco-v">69,90</span><span class="preco-mes">por mês</span></p>
         <p class="plano-desc">Tudo do Essencial e a emissão de notas fiscais de serviço dentro do sistema.</p>
-        <p class="plano-aviso">A emissão está em desenvolvimento. Quem assina este plano agora já tem todo o Essencial e recebe a emissão assim que ela for liberada.</p>
-        <a class="btn btn-linha btn-gg" data-app="/#/cadastro" href="https://app.honocontabil.com.br/#/cadastro">Testar 7 dias grátis</a>
+        <ul class="plano-lista">
+          <li>Tudo do plano Essencial</li>
+          <li>Emissão de NFS-e Nacional, direto no sistema</li>
+          <li>XML e PDF das notas emitidas</li>
+          <li>Notas fiscais: emitidas e a emitir</li>
+          <li>Impostos: Simples Nacional estimado mês a mês</li>
+          <li>Tabelas: Simples, INSS, IR e salário mínimo</li>
+        </ul>
+        <a class="btn btn-claro btn-gg" data-app="/#/cadastro" href="https://app.honocontabil.com.br/#/cadastro">Testar 7 dias grátis</a>
       </article>
     </div>
   </div>
@@ -252,11 +286,12 @@
       <p>Não achou a sua? <a data-wa href="https://wa.me/5599982850044?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20Hono%20Cont%C3%A1bil." target="_blank" rel="noopener">Pergunte no WhatsApp</a>.</p>
     </header>
     <div class="faq">
-      <details><summary>Como funciona o teste grátis?</summary><p>Você cria a conta com o CNPJ do escritório e usa o sistema completo por 7 dias. Não pedimos cartão de crédito. Para continuar depois, é só assinar um dos planos.</p></details>
+      <details><summary>Como funciona o teste grátis?</summary><p>Você cria a conta com o CNPJ do escritório e usa o sistema completo por 7 dias. Não pedimos cartão de crédito. Para continuar depois, é só assinar um dos planos. Durante o teste, todas as telas ficam liberadas.</p></details>
       <details><summary>O que acontece se eu não assinar depois do teste?</summary><p>O acesso passa a ser somente consulta por alguns dias e depois é bloqueado. Seus dados não são apagados automaticamente, e você volta a usar quando assinar.</p></details>
       <details><summary>Quantos usuários e clientes posso cadastrar?</summary><p>Quantos precisar. Não há limite de usuários nem de clientes em nenhum dos planos.</p></details>
       <details><summary>Os dados do meu escritório ficam misturados com os de outros?</summary><p>Não. Cada escritório tem o seu próprio banco de dados, separado dos demais.</p></details>
-      <details><summary>O sistema emite nota fiscal?</summary><p>A emissão de NFS-e está em desenvolvimento e será liberada no plano com emissão de NFS-e. Hoje o sistema cuida do financeiro: contratos, cobranças, despesas, recibos e relatórios.</p></details>
+      <details><summary>O sistema emite nota fiscal?</summary><p>Sim. O plano completo emite a NFS-e Nacional direto no sistema, com XML e PDF da nota. Para emitir, o escritório precisa estar em um município que use a NFS-e Nacional e ter o certificado digital A1. No plano Essencial você continua controlando as notas emitidas por fora.</p></details>
+      <details><summary>Como funciona a oferta de Black Friday?</summary><p>Quem assinar o sistema completo na Black Friday paga R$ 49,90 por mês nos 3 primeiros meses. Depois disso, o valor passa para R$ 69,90 por mês. Sem fidelidade: você pode cancelar quando quiser.</p></details>
       <details><summary>Posso importar o extrato do banco?</summary><p>Sim. O sistema importa arquivos OFX, que a maioria dos bancos oferece no internet banking.</p></details>
       <details><summary>Como pago a assinatura?</summary><p>Por Pix, boleto ou cartão de crédito, em uma página de pagamento segura do Asaas. Quando o pagamento é confirmado, o sistema libera o acesso sozinho.</p></details>
       <details><summary>Como cancelo?</summary><p>Na tela Assinatura do sistema, em Cancelar assinatura. Seu acesso continua até o fim do período já pago.</p></details>
@@ -408,6 +443,24 @@
   <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.8 2 6.8L3.2 29l6.6-1.7c1.9 1 4 1.6 6.2 1.6 7.2 0 13-5.7 13-12.8S23.200 3 16 3zm0 23.300c-2 0-3.900-.5-5.500-1.500l-.4-.2-3.900 1 1-3.800-.3-.4a10.300 10.300 0 0 1-1.600-5.600C5.300 10 10.100 5.400 16 5.400s10.700 4.600 10.700 10.400S21.900 26.300 16 26.300zm5.900-7.700c-.3-.2-1.900-.9-2.200-1s-.5-.2-.7.200-.8 1-1 1.200-.4.200-.7.100c-1.900-.9-3.100-1.700-4.400-3.800-.3-.6.300-.5.900-1.700.1-.2.100-.4 0-.5l-1-2.300c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.100-.8.400-.3.300-1.100 1.100-1.100 2.600s1.100 3 1.300 3.200c.2.200 2.200 3.400 5.400 4.700 2 .8 2.800.9 3.800.8.600-.1 1.900-.8 2.200-1.500.3-.7.300-1.400.2-1.500-.1-.2-.3-.2-.6-.4z"/></svg>
   <span class="zap-rot">Falar no WhatsApp</span>
 </a>
+
+
+<!-- ================= CARD BLACK FRIDAY ================= -->
+<div class="bf" id="bf" hidden role="dialog" aria-modal="true" aria-labelledby="bf-tit">
+  <div class="bf-fundo" data-bf-fechar></div>
+  <article class="bf-card">
+    <button class="bf-x" type="button" data-bf-fechar aria-label="Fechar oferta">&times;</button>
+    <a class="bf-link" data-app="/#/cadastro" href="https://app.honocontabil.com.br/#/cadastro">
+      <span class="bf-selo">Black Friday</span>
+      <h2 id="bf-tit">Sistema completo pelo preço do Essencial nos <em>3 primeiros meses</em></h2>
+      <p class="bf-preco"><span>R$</span><strong>49,90</strong><span>/mês</span></p>
+      <p class="bf-depois">Depois, R$ 69,90 por mês. Com emissão de NFS-e, Impostos e Tabelas.</p>
+      <ul class="bf-lista"><li>Emissão de NFS-e dentro do sistema</li><li>Impostos do Simples e tabelas sempre à mão</li><li>7 dias grátis, sem cartão e sem fidelidade</li></ul>
+      <span class="bf-btn">Quero essa oferta <span aria-hidden="true">&rarr;</span></span>
+    </a>
+    <button class="bf-depois-btn" type="button" data-bf-fechar>Agora não</button>
+  </article>
+</div>
 
 <script src="assets/js/site.js"></script>
 </body>
