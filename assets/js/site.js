@@ -23,6 +23,17 @@ const SITE = {
   if (algumaRede) $('#redes').hidden = false;
   const ano = $('#ano'); if (ano) ano.textContent = new Date().getFullYear();
 
+  // ----- card da Black Friday: aparece ao entrar (uma vez por visita) e leva ao cadastro -----
+  const bf = $('#bf');
+  if (bf) {
+    let visto = false; try { visto = sessionStorage.getItem('bf-visto') === '1'; } catch (_) {}
+    const fecharBf = () => { bf.hidden = true; document.body.style.overflow = ''; try { sessionStorage.setItem('bf-visto', '1'); } catch (_) {} };
+    $$('[data-bf-fechar]', bf).forEach((x) => x.addEventListener('click', fecharBf));
+    $('.bf-link', bf).addEventListener('click', () => { try { sessionStorage.setItem('bf-visto', '1'); } catch (_) {} });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !bf.hidden) fecharBf(); });
+    if (!visto) setTimeout(() => { bf.hidden = false; document.body.style.overflow = 'hidden'; const x = $('.bf-x', bf); if (x) x.focus({ preventScroll: true }); }, 900);
+  }
+
   // ----- topo: sombra ao rolar e botão do WhatsApp -----
   const topo = $('#topo'), zap = $('#zap');
   const aoRolar = () => { const y = window.scrollY; topo.classList.toggle('rolou', y > 8); zap.classList.toggle('ve', y > 640); };
