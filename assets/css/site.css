@@ -64,7 +64,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .topo.rolou { border-bottom-color: var(--linha); box-shadow: 0 6px 20px -14px rgba(12,26,36,.35); }
 .topo-in { max-width: var(--larg); margin: 0 auto; padding: 12px var(--gut); display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .marca { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--tinta); font-family: var(--f-tit); font-weight: 750; font-size: 20px; letter-spacing: -0.02em; }
-.marca-ico { width: 34px; height: 34px; flex: none; }
+.marca-ico { width: 34px; height: 34px; flex: none; border-radius: 8px; }
 .marca-clara { color: #fff; }
 .menu { display: flex; align-items: center; gap: 28px; }
 .menu > a { color: var(--tinta); text-decoration: none; font-weight: 550; font-size: 15.5px; padding: 6px 0; background: linear-gradient(var(--verde), var(--verde)) 0 100% / 0 2px no-repeat; transition: background-size .2s; }
